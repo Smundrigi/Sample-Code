@@ -65,16 +65,20 @@ public class Test1Test {
  public void test_Login_InvalidCredentials() throws InterruptedException
  {
 	 driver.get("https://plinqit.com/");
-	 WebElement login = driver.findElement(By.xpath("//*[@id=\"mk-header-1\"]/div/div/div[2]/div/div[2]/div"));
+	 WebElement login = driver.findElement(By.cssSelector(".custom_login_1"));
+	 //WebElement login = driver.findElement(By.xpath("//*[@id=\"mk-header-1\"]/div/div/div[2]/div/div[2]/div"));
 	 js.executeScript("arguments[0].click();",login);
 	 Thread.sleep(1000);
 	 driver.findElement(By.id("email")).sendKeys("abc@gmail.com");
 	 driver.findElement(By.id("password")).sendKeys("abc123456");
 	 Thread.sleep(1000);
-	 driver.findElement(By.xpath("//*[@id=\"form_login\"]/div[3]/button")).click();
+	 //driver.findElement(By.xpath("//*[@id=\"form_login\"]/div[3]/button")).click();
+	 driver.findElement(By.cssSelector("button.btn")).click();
 	 Thread.sleep(1000);
-	 Boolean display = driver.findElement(By.xpath("/html/body/div[4]/div/div[2]")).isDisplayed();
-	 driver.findElement(By.xpath("/html/body/div[4]/div/div[2]/div")).click();
+	 //Boolean display = driver.findElement(By.xpath("/html/body/div[4]/div/div[2]")).isDisplayed();
+	 //driver.findElement(By.xpath("/html/body/div[4]/div/div[2]/div")).click();
+	 Boolean display = driver.findElement(By.cssSelector(".layer_content")).isDisplayed();
+	 driver.findElement(By.cssSelector(".dismiss")).click();
 	 Thread.sleep(1000);
 	 assertTrue(display);
 	 driver.close();
@@ -87,7 +91,8 @@ public class Test1Test {
  {
 	 String url = null;
 	 driver.navigate().to("https://plinqit.com/");
-	 WebElement element = driver.findElement(By.xpath("//*[@id=\"mk-header-1\"]/div/div/div[2]/div/div[1]/div/div[1]"));
+	 //WebElement element = driver.findElement(By.xpath("//*[@id=\"mk-header-1\"]/div/div/div[2]/div/div[1]/div/div[1]"));
+	 WebElement element = driver.findElement(By.cssSelector(".mk-css-icon-menu"));
 	 js.executeScript("arguments[0].click();",element);
 	 Thread.sleep(1000);
 	 element = driver.findElement(By.cssSelector("#menu-item-333 > a > span"));
